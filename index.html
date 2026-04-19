@@ -6,6 +6,7 @@
 <title>Minkola 3D — Premium & Standard Party Bags</title>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root {
   --yellow:#FFD600; --orange:#FF6B35; --pink:#FF3D9A; --teal:#00C9B1;
@@ -204,89 +205,46 @@ footer a{color:var(--pink);text-decoration:none}
 <section class="section custom-section" id="custom">
   <h2 class="section-title">Place Your Order</h2>
   <p class="section-sub">Tell us about your party and we'll be back in touch within 24 hours</p>
-
   <form class="custom-form" onsubmit="submitOrder(event)">
     <div class="form-row">
       <input type="text" id="fFirstName" placeholder="First name" required>
       <input type="text" id="fLastName" placeholder="Last name" required>
     </div>
-
     <input type="email" id="fEmail" placeholder="Email address" required style="width:100%">
-
     <div>
-      <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">
-        📱 Mobile Number
-      </label>
+      <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem;margin-top:.5rem">📱 Mobile Number</label>
       <input type="tel" id="fMobile" placeholder="Mobile number" required style="width:100%">
     </div>
-
     <div>
-      <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">
-        📦 Delivery Address
-      </label>
-      <textarea id="fAddress" placeholder="House, street, town, postcode" rows="3" required style="width:100%;margin-bottom:1rem"></textarea>
+      <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem;margin-top:.5rem">🏠 Delivery Address</label>
+      <textarea id="fAddress" placeholder="House, street, town, postcode" rows="3" required style="width:100%;margin-bottom:0"></textarea>
     </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.5rem">
       <div>
-        <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">
-          📦 Bags Needed By
-        </label>
+        <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">🎂 Birthday Party Date</label>
+        <input type="date" required id="fPartyDate" style="width:100%;margin-bottom:0">
+      </div>
+      <div>
+        <label style="display:block;font-size:.75rem;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem">📦 Bags Needed By</label>
         <input type="date" required id="fDueDate" style="width:100%;margin-bottom:0">
       </div>
     </div>
-
     <div style="background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem 1.4rem;margin-top:1.5rem">
-      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">
-        Bag Quantities
-      </div>
-
+      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">Bag Quantities</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
-        <div>
-          <label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">
-            👧 Girls — Standard £3.00
-          </label>
-          <input id="qGS" type="number" min="0" value="0" oninput="calcTotal()">
-        </div>
-
-        <div>
-          <label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">
-            👧 Girls — Premium £6.00
-          </label>
-          <input id="qGP" type="number" min="0" value="0" oninput="calcTotal()">
-        </div>
-
-        <div>
-          <label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">
-            👦 Boys — Standard £3.00
-          </label>
-          <input id="qBS" type="number" min="0" value="0" oninput="calcTotal()">
-        </div>
-
-        <div>
-          <label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">
-            👦 Boys — Premium £6.00
-          </label>
-          <input id="qBP" type="number" min="0" value="0" oninput="calcTotal()">
-        </div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Standard £3.00</label><input id="qGS" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Premium £6.00</label><input id="qGP" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">👦 Boys — Standard £3.00</label><input id="qBS" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">👦 Boys — Premium £6.00</label><input id="qBP" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
       </div>
-
       <div id="orderSummary" style="margin-top:1rem;padding:.9rem 1rem;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.2);border-radius:10px;font-size:.88rem;font-weight:700;color:rgba(255,255,255,.85);display:none;line-height:1.8;"></div>
     </div>
-
     <div style="background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem 1.4rem;margin-top:1.5rem">
-      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">
-        🚀 Add Extras
-      </div>
+      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">🚀 Add Extras</div>
       <div id="extrasOrderList" style="display:flex;flex-direction:column;gap:.7rem;"></div>
     </div>
-
     <textarea placeholder="Anything else? Colour preferences, allergies, delivery notes..." style="margin-top:1.5rem"></textarea>
-
-    <button type="submit" class="btn-primary" id="submitBtn" style="margin-top:.5rem">
-      Send My Order Request 🎉
-    </button>
-
+    <button type="submit" class="btn-primary" id="submitBtn" style="margin-top:.5rem">Send My Order Request 🎉</button>
     <div style="height:2rem"></div>
   </form>
 </section>
@@ -512,15 +470,15 @@ async function submitOrder(e) {
   const estimatedTotal = '£'+total.toFixed(2);
 
   const params = {
-    customer_name:   name,
-    customer_email:  email,
-    customer_mobile: mobile,
-    customer_address:address,
-    party_date:      partyDate || 'Not specified',
-    due_date:        dueDate || 'Not specified',
-    order_summary:   orderSummary,
-    notes:           notes || 'None',
-    estimated_total: estimatedTotal,
+    customer_name:    name,
+    customer_email:   email,
+    customer_mobile:  mobile,
+    customer_address: address,
+    party_date:       partyDate || 'Not specified',
+    due_date:         dueDate || 'Not specified',
+    order_summary:    orderSummary,
+    notes:            notes || 'None',
+    estimated_total:  estimatedTotal,
   };
 
   try {
