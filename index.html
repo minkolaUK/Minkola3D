@@ -149,6 +149,8 @@ footer a{color:var(--pink);text-decoration:none}
 .modal-footer{font-size:.82rem;color:#555;font-weight:600}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes popUp{from{opacity:0;transform:scale(.8) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.date-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.bag-qty-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:768px){
   h1{font-size:2.2rem}
   nav ul{display:none}
@@ -169,11 +171,13 @@ footer a{color:var(--pink);text-decoration:none}
   .coming-soon-grid{grid-template-columns:repeat(2,1fr)}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .form-row{grid-template-columns:1fr}
+  .date-row{grid-template-columns:1fr}
+  .bag-qty-grid{grid-template-columns:1fr}
   .custom-form{padding:1.2rem}
   .custom-form input,.custom-form textarea,.custom-form select{font-size:16px}
-  .qty-modifier-group{padding:.3rem .5rem}
-  .qty-modifier-group button{width:40px;height:40px;font-size:1.2rem}
-  .qty-modifier-group .qty-value{font-size:1.1rem;min-width:40px}
+  .qty-modifier-group{width:100%;justify-content:center;padding:.4rem .6rem}
+  .qty-modifier-group button{width:48px;height:48px;font-size:1.4rem}
+  .qty-modifier-group .qty-value{font-size:1.2rem;min-width:48px}
   .modal-box{padding:1.5rem 1rem;margin:.5rem}
   .modal-title{font-size:1.8rem}
   .cart-bubble{bottom:1rem;left:1rem;font-size:.85rem;padding:.6rem 1.1rem}
@@ -223,11 +227,11 @@ footer a{color:var(--pink);text-decoration:none}
     <input type="email" id="fEmail" placeholder="Email address" required>
     <input type="tel" id="fMobile" placeholder="Mobile number" required>
     <textarea id="fAddress" placeholder="House, street, town, postcode" rows="3" required></textarea>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;"><div><label style="display:block;font-size:.75rem;font-weight:900;color:rgba(255,255,255,.5);margin-bottom:.4rem">🎂 Birthday Party Date</label><input type="date" required id="fPartyDate"></div><div><label style="display:block;font-size:.75rem;font-weight:900;color:rgba(255,255,255,.5);margin-bottom:.4rem">📦 Bags Needed By</label><input type="date" required id="fDueDate"></div></div>
+    <div class="date-row"><div><label style="display:block;font-size:.75rem;font-weight:900;color:rgba(255,255,255,.5);margin-bottom:.4rem">🎂 Birthday Party Date</label><input type="date" required id="fPartyDate"></div><div><label style="display:block;font-size:.75rem;font-weight:900;color:rgba(255,255,255,.5);margin-bottom:.4rem">📦 Bags Needed By</label><input type="date" required id="fDueDate"></div></div>
     
     <div style="background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem 1.4rem;margin-top:1.5rem">
       <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">Bag Quantities</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+      <div class="bag-qty-grid">
         <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Standard £3.00</label><div class="qty-modifier-group"><button type="button" onclick="modifyBagQty('qGS', -1)">−</button><span class="qty-value" id="qGS_disp">0</span><button type="button" onclick="modifyBagQty('qGS', 1)">+</button></div><input type="hidden" id="qGS" value="0"></div>
         <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Premium £6.00</label><div class="qty-modifier-group"><button type="button" onclick="modifyBagQty('qGP', -1)">−</button><span class="qty-value" id="qGP_disp">0</span><button type="button" onclick="modifyBagQty('qGP', 1)">+</button></div><input type="hidden" id="qGP" value="0"></div>
         <div><label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">👦 Boys — Standard £3.00</label><div class="qty-modifier-group"><button type="button" onclick="modifyBagQty('qBS', -1)">−</button><span class="qty-value" id="qBS_disp">0</span><button type="button" onclick="modifyBagQty('qBS', 1)">+</button></div><input type="hidden" id="qBS" value="0"></div>
@@ -246,7 +250,7 @@ footer a{color:var(--pink);text-decoration:none}
   </form>
 </section>
 
-<footer><div class="footer-logo">Minkola 3D</div><p>3D Printed Party Bags — Made with ❤️ in the UK</p><p style="margin-top:.5rem"><a href="mailto:minkola@gmail.com">minkola@gmail.com</a> &nbsp;·&nbsp; ages 5+</p><p style="margin-top:.8rem;font-size:.8rem;opacity:.5">© 2026 Minkola 3D. All rights reserved.</p></footer>
+<footer><div class="footer-logo">Minkola 3D</div><p>3D Printed Party Bags — Made with ❤️ in the UK</p><p style="margin-top:.5rem"><a href="mailto:minkola@gmail.com">minkola@gmail.com</a> &nbsp;·&nbsp; ages 5+</p><p style="margin-top:.8rem;font-size:.8rem;opacity:.5">© 2026 Minkola 3D. All rights reserved. v1.0</p></footer>
 <div id="orderModal" style="display:none" class="modal-overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">✕</button>
