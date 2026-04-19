@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minkola 3D — Premium & Standard Party Bags</title>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root {
+  --yellow:#FFD600; --orange:#FF6B35; --pink:#FF3D9A; --teal:#00C9B1;
+  --purple:#7C3AED; --blue:#3B82F6; --navy:#1A1240; --white:#FFFDF7; --card-bg:#FFFDF7;
+  --accent:#FF3D9A; --accent-dark:#b8006e; --accent-soft:#fff0f8;
+}
+*{margin:0;padding:0;box-sizing:border-box} html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--navy);overflow-x:hidden}
+nav{display:flex;justify-content:space-between;align-items:center;padding:0 2rem;height:64px;background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 4px 0 var(--yellow)}
+.nav-logo{font-size:1.7rem;font-weight:900;font-family:'Boogaloo',cursive;color:var(--yellow);letter-spacing:1px}
+.nav-logo span{color:var(--pink)}
+nav ul{display:flex;gap:1.5rem;list-style:none;align-items:center}
+nav ul li a{text-decoration:none;color:var(--white);font-weight:700;font-size:.95rem;transition:color .2s}
+nav ul li a:hover{color:var(--yellow)}
+.nav-cta{background:var(--yellow);color:var(--navy)!important;padding:.4rem 1.2rem;border-radius:100px;font-weight:900!important}
+.nav-cta:hover{background:var(--orange);color:var(--white)!important}
+.hero{background:var(--navy);text-align:center;padding:5rem 2rem 4rem;position:relative;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero-blobs{position:absolute;inset:0;overflow:hidden;z-index:0}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;animation:float 8s ease-in-out infinite}
+.blob-1{width:500px;height:500px;background:var(--purple);top:-100px;left:-100px}
+.blob-2{width:400px;height:400px;background:var(--pink);bottom:-80px;right:-80px;animation-delay:3s}
+.blob-3{width:300px;height:300px;background:var(--teal);top:40%;left:50%;animation-delay:1.5s}
+.toy-float{position:absolute;font-size:2.5rem;animation:float 6s ease-in-out infinite;pointer-events:none;z-index:1;opacity:.9;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.toy-float:nth-child(3){top:20%;left:10%;animation-delay:0s}
+.toy-float:nth-child(4){top:60%;right:10%;animation-delay:1s;font-size:2rem}
+.toy-float:nth-child(5){top:40%;left:80%;animation-delay:2s;font-size:1.8rem}
+.toy-float:nth-child(6){bottom:10%;left:20%;animation-delay:1.5s;font-size:2.2rem}
+.toy-float:nth-child(7){top:70%;left:5%;animation-delay:2.5s;font-size:1.5rem}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.hero-badge{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:900;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:.35rem 1rem;border-radius:100px;margin-bottom:1.5rem;position:relative;z-index:2}
+h1{font-size:clamp(3rem,8vw,6rem);font-family:'Boogaloo',cursive;color:var(--white);line-height:1.05;margin-bottom:1rem;position:relative;z-index:2}
+.accent{color:var(--yellow)}
+.accent2{color:var(--pink)}
+.hero-sub{font-size:1.15rem;font-weight:600;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 2rem;line-height:1.6;position:relative;z-index:2}
+.hero-btns{display:flex;gap:1rem;justify-content:center;position:relative;z-index:2}
+.btn-primary,.btn-secondary,.btn-accent{padding:.85rem 2.2rem;border-radius:100px;font-weight:900;font-size:1rem;text-decoration:none;display:inline-block;transition:transform .15s,box-shadow .15s;cursor:pointer;border:none;font-family:'Nunito',sans-serif}
+.btn-primary{background:linear-gradient(135deg,#FFD600,#FFB800);color:var(--navy);box-shadow:0 4px 0 #b89800}
+.btn-primary:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 6px 0 #b89800}
+.btn-primary:active{transform:translateY(1px);box-shadow:0 2px 0 #b89800}
+.btn-secondary{background:transparent;border:2px solid rgba(255,255,255,.4);color:var(--white)}
+.btn-secondary:hover{border-color:var(--yellow);color:var(--yellow)}
+.btn-accent{background:var(--accent);color:#fff;box-shadow:0 3px 0 var(--accent-dark)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--accent-dark)}
+.trust-bar{background:#FFF8E1;border-top:3px solid var(--navy);border-bottom:3px solid var(--navy);display:flex;justify-content:center;gap:2rem;padding:.9rem 1rem;flex-wrap:wrap;font-weight:800;font-size:.95rem;color:var(--navy)}
+.section{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-family:'Boogaloo',cursive;text-align:center;margin-bottom:.5rem;color:var(--navy)}
+.section-sub{text-align:center;color:#555;font-size:1rem;font-weight:600;margin-bottom:3.5rem}
+.steps{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.step{background:var(--card-bg);border:3px solid var(--navy);border-radius:20px;padding:2rem 1.5rem;text-align:center;flex:1;min-width:200px;box-shadow:6px 6px 0 var(--navy);transition:transform .2s,box-shadow .2s}
+.step:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--navy)}
+.step-num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Boogaloo',cursive;font-size:1.4rem;margin:0 auto 1rem;border:3px solid var(--navy)}
+.step:nth-child(1) .step-num{background:var(--yellow)}
+.step:nth-child(2) .step-num{background:var(--pink);color:white}
+.step:nth-child(3) .step-num{background:var(--teal)}
+.step h3{font-size:1.05rem;font-weight:900;margin-bottom:.5rem}
+.step p{font-size:.9rem;color:#555;line-height:1.5}
+.products-section{background:#FFF8E1}
+.selectors{display:flex;justify-content:center;gap:2rem;margin-bottom:2rem;flex-wrap:wrap}
+.sel-group{display:flex;flex-direction:column;gap:.5rem}
+.sel-label{font-weight:800;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:#999}
+.sel-pills{display:flex;gap:.5rem}
+.pill{padding:.55rem 1.4rem;border-radius:100px;font-weight:800;font-size:.9rem;border:3px solid var(--navy);background:#fff;color:var(--navy);cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s}
+.pill.on-girl{background:var(--pink);color:#fff;box-shadow:0 3px 0 #b8006e;border-color:var(--pink)}
+.pill.on-boy{background:var(--blue);color:#fff;box-shadow:0 3px 0 #1d4ed8;border-color:var(--blue)}
+.pill.on-tier{background:var(--navy);color:var(--yellow);box-shadow:0 3px 0 #08071a}
+.bag-card{max-width:1060px;margin:0 auto;background:var(--white);border:3px solid var(--navy);border-radius:24px;box-shadow:8px 8px 0 var(--navy);overflow:hidden;animation:fadeUp .35s ease}
+.bag-head{padding:2rem 2rem 1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-bottom:3px solid var(--navy);background:var(--accent-soft);transition:background .4s}
+.bag-head-left h2{font-family:'Boogaloo',cursive;font-size:2rem;margin-bottom:.3rem;color:var(--navy)}
+.bag-head-left p{color:#555;font-size:.95rem;font-weight:600;line-height:1.5;max-width:420px}
+.safety-badge{display:inline-flex;align-items:center;gap:.4rem;margin-top:.6rem;background:#F0FFF4;border:2px solid #86efac;border-radius:100px;padding:.3rem .9rem;font-size:.8rem;font-weight:800;color:#166534}
+.bag-price{font-family:'Boogaloo',cursive;font-size:2.6rem;line-height:1;color:var(--navy)}
+.bag-price .sm{font-size:.85rem;font-family:'Nunito',sans-serif;color:#888;font-weight:600}
+.bag-price .pt{font-size:.78rem;font-family:'Nunito',sans-serif;color:var(--teal);font-weight:800;display:block;margin-top:.15rem}
+.toys-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;padding:1.5rem}
+.toy-item{display:flex;flex-direction:column;background:var(--white);border:3px solid var(--navy);border-radius:16px;overflow:hidden;box-shadow:4px 4px 0 var(--navy);transition:transform .2s,box-shadow .2s}
+.toy-item:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--navy);background:var(--white)}
+.toy-img{height:140px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.toy-img img{width:100%;height:100%;object-fit:cover}
+.toy-emoji{font-size:2rem}
+.toy-body{padding:.8rem 1rem}
+.toy-body h4{font-size:.92rem;font-weight:900;margin-bottom:.2rem;color:var(--navy)}
+.toy-body p{font-size:.78rem;color:#666;line-height:1.4}
+.sweet-row{display:flex;align-items:center;gap:1.2rem;padding:1rem 1.5rem;background:#FFFDE7;border-top:3px solid var(--navy)}
+.si{font-size:2rem}
+.sweet-row h4{font-weight:900;font-size:.95rem;color:var(--navy);margin-bottom:.1rem}
+.sweet-row p{font-size:.8rem;color:#555}
+.bag-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding:1.4rem 2rem;border-top:3px solid var(--navy);background:var(--accent-soft);transition:background .4s}
+.bag-foot p{font-size:.85rem;font-weight:700;color:#555}
+.extras-section{background:#F5F0FF}
+.extras-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin-top:2rem}
+.extra-card{background:var(--white);border:3px solid var(--navy);border-radius:20px;overflow:hidden;box-shadow:6px 6px 0 var(--navy);transition:transform .2s,box-shadow .2s}
+.extra-card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--navy)}
+.extra-img{height:140px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.extra-img img{width:100%;height:100%;object-fit:cover}
+.extra-body{padding:1rem}
+.extra-body h4{font-size:.95rem;font-weight:900;margin-bottom:.3rem;color:var(--navy)}
+.extra-body p{font-size:.8rem;color:#555;line-height:1.4;margin-bottom:.5rem}
+.extra-meta{display:flex;justify-content:space-between;align-items:center;font-size:.75rem;font-weight:800}
+.extra-link{color:var(--purple);text-decoration:none;border:2px solid var(--purple);border-radius:100px;padding:.2rem .7rem;transition:background .15s,color .15s}
+.extra-link:hover{background:var(--purple);color:#fff}
+.coming-soon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.coming-card{background:var(--white);border:3px solid var(--navy);border-radius:20px;padding:1.5rem;text-align:center;box-shadow:5px 5px 0 var(--navy);position:relative}
+.coming-badge{position:absolute;top:-14px;right:20px;background:var(--yellow);color:var(--navy);padding:.25rem .8rem;border-radius:100px;font-size:.7rem;font-weight:900;border:2px solid var(--navy)}
+.coming-icon{font-size:3rem;margin-bottom:.5rem}
+.coming-card h3{font-size:1rem;font-weight:900;color:var(--navy)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.why-card{background:var(--white);border:3px solid var(--navy);border-radius:20px;padding:2rem 1.5rem;text-align:center;box-shadow:5px 5px 0 var(--navy);transition:transform .2s,box-shadow .2s}
+.why-card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--navy)}
+.why-icon{font-size:2.5rem;margin-bottom:.8rem}
+.why-card h3{font-size:1rem;font-weight:900;margin-bottom:.4rem;color:var(--navy)}
+.why-card p{font-size:.88rem;color:#555;line-height:1.5}
+.custom-section{background:var(--navy);color:var(--white);padding:5rem 2rem;position:relative;overflow:hidden}
+.custom-section .section-title{color:var(--yellow)}
+.custom-section .section-sub{color:rgba(255,255,255,.65)}
+.custom-form{background:rgba(255,255,255,.05);border:3px solid rgba(255,255,255,.2);border-radius:24px;padding:2rem;max-width:800px;margin:0 auto}
+.custom-form input,.custom-form textarea,.custom-form select{width:100%;padding:.85rem 1.1rem;margin-bottom:1rem;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.2);border-radius:12px;color:var(--white);font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;outline:none;transition:border-color .2s}
+.custom-form input::placeholder,.custom-form textarea::placeholder{color:rgba(255,255,255,.4)}
+.custom-form input:focus,.custom-form textarea:focus{border-color:var(--yellow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+footer{background:var(--navy);text-align:center;padding:2.5rem 2rem;border-top:4px solid var(--yellow)}
+.footer-logo{font-family:'Boogaloo',cursive;font-size:1.5rem;color:var(--yellow);margin-bottom:.5rem}
+footer p{color:rgba(255,255,255,.6);font-size:.88rem;font-weight:600}
+footer a{color:var(--pink);text-decoration:none}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--teal);color:var(--navy);font-weight:900;padding:1rem 1.5rem;border-radius:14px;border:3px solid var(--navy);box-shadow:4px 4px 0 var(--navy);font-size:.95rem;transform:translateY(120px);transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:999;opacity:1;pointer-events:none}
+.toast.show{transform:translateY(0)}
+.cart-bubble{position:fixed;bottom:2rem;left:2rem;background:linear-gradient(135deg,#FFD600,#FFB800);color:var(--navy);border:3px solid var(--navy);border-radius:100px;padding:.7rem 1.5rem;font-weight:900;font-size:.95rem;box-shadow:4px 4px 0 var(--navy);cursor:pointer;z-index:999;display:none;transition:transform .15s;font-family:'Nunito',sans-serif}
+.cart-bubble:hover{transform:translateY(-2px)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media (max-width:768px){h1{font-size:2.2rem}.hero{padding:2rem 1rem}.section{padding:2rem 1rem}.form-row{grid-template-columns:1fr} nav ul{display:none} .trust-bar{gap:1rem;font-size:.82rem}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Minkola <span>3D</span></div>
+  <ul>
+    <li><a href="#products">The Bag</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#extras">Extras</a></li>
+    <li><a href="#coming">Coming Soon</a></li>
+    <li><a href="#custom">Order</a></li>
+    <li><a href="#custom" class="nav-cta">Order Now 🎉</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-blobs"><div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div></div>
+  <span class="toy-float">🥏</span><span class="toy-float">🐙</span><span class="toy-float">🌀</span><span class="toy-float">🎵</span><span class="toy-float">🔗</span><span class="toy-float">🧩</span>
+  <div class="hero-badge">✦ 3D Printed in the UK ✦</div>
+  <h1>Party Bags Kids<br><span class="accent">Actually</span><br><span class="accent2">Play With</span></h1>
+  <p class="hero-sub">Standard or Premium — unique 3D printed toys from our exclusive collection. No duplicates.</p>
+  <div class="hero-btns"><a href="#products" class="btn-primary">Explore Bags 🎁</a><a href="#custom" class="btn-secondary">Order Now</a></div>
+</section>
+
+<div class="trust-bar"><span>✅ Made in the UK</span><span>🍬 Sweet in every bag!</span><span>🎨 Standard & Premium options</span></div>
+
+<section class="section" id="how">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">From order to doorstep — simple as that</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Choose Your Bag</h3><p>Pick boys/girls, choose Standard or Premium — done in seconds.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>We Print Fresh</h3><p>Every toy 3D printed to order on Bambu P1S — vibrant colours, real designs.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Delivered to You</h3><p>Arrive packed and ready — just hand them out at the party!</p></div>
+  </div>
+</section>
+
+<section class="section products-section" id="products">
+  <h2 class="section-title">The Minkola Collection</h2>
+  <p class="section-sub">Standard or Premium — girls & boys editions</p>
+  <div class="selectors">
+    <div class="sel-group"><div class="sel-label">For</div><div class="sel-pills" id="genderPills"><button class="pill on-girl" onclick="setGender('girl',this)">👧 Girls</button><button class="pill" onclick="setGender('boy',this)">👦 Boys</button></div></div>
+    <div class="sel-group"><div class="sel-label">Tier</div><div class="sel-pills" id="tierPills"><button class="pill on-tier" onclick="setTier('standard',this)">⭐ Standard</button><button class="pill" onclick="setTier('premium',this)">✨ Premium</button></div></div>
+  </div>
+  <div class="bag-card" id="bagCard"></div>
+</section>
+
+<section class="section extras-section" id="extras">
+  <h2 class="section-title">🚀 Extras</h2>
+  <p class="section-sub">Add-on items available to include with your order — just mention them in the notes</p>
+  <div class="extras-grid" id="extrasGrid"></div>
+</section>
+
+<!-- Coming Soon Themed Parties Section -->
+<section class="section" id="coming">
+  <h2 class="section-title">🎈 Coming Soon — Themed Party Bags</h2>
+  <p class="section-sub">Exciting new themes on the way!</p>
+  <div class="coming-soon-grid" id="comingGrid"></div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Why Minkola 3D?</h2>
+  <p class="section-sub">Not your average party bags!</p>
+  <div class="why-grid"><div class="why-card"><div class="why-icon">🇬🇧</div><h3>Made in the UK</h3><p>Every toy printed fresh in our UK workshop.</p></div><div class="why-card"><div class="why-icon">🌈</div><h3>Unique Colours</h3><p>Silk, rainbow and multi-colour PLA.</p></div><div class="why-card"><div class="why-icon">✅</div><h3>Fun & Easy</h3><p>Age-appropriate designs, made with care in the UK.</p></div><div class="why-card"><div class="why-icon">🍬</div><h3>Sweet Included</h3><p>Every bag comes with a little sweet treat!</p></div></div>
+</section>
+
+<section class="section custom-section" id="custom">
+  <h2 class="section-title">Place Your Order</h2>
+  <p class="section-sub">Tell us about your party and we'll be back in touch within 24 hours</p>
+  <form class="custom-form" onsubmit="submitOrder(event)">
+    <div class="form-row"><input type="text" placeholder="Your name" required><input type="email" placeholder="Email address" required></div>
+    <input type="date" required title="Party date" style="width:100%">
+    <div style="background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem 1.4rem;">
+      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">Bag Quantities</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Standard £3.00</label><input id="qGS" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#FF9EC8;margin-bottom:.35rem;">👧 Girls — Premium £6.00</label><input id="qGP" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">👦 Boys — Standard £3.00</label><input id="qBS" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+        <div><label style="display:block;font-size:.8rem;font-weight:800;color:#93C5FD;margin-bottom:.35rem;">👦 Boys — Premium £6.00</label><input id="qBP" type="number" min="0" value="0" placeholder="0" oninput="calcTotal()"></div>
+      </div>
+      <div id="orderSummary" style="margin-top:1rem;padding:.9rem 1rem;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.2);border-radius:10px;font-size:.88rem;font-weight:700;color:rgba(255,255,255,.85);display:none;line-height:1.8;"></div>
+    </div>
+    <div style="background:rgba(255,255,255,.07);border:3px solid rgba(255,255,255,.2);border-radius:16px;padding:1.2rem 1.4rem;">
+      <div style="font-weight:900;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1rem;">🚀 Add Extras</div>
+      <div id="extrasOrderList" style="display:flex;flex-direction:column;gap:.7rem;"></div>
+    </div>
+    <textarea placeholder="Anything else? Colour preferences, allergies, delivery notes..."></textarea>
+    <button type="submit" class="btn-primary" id="submitBtn">Send My Order Request 🎉</button>
+  </form>
+</section>
+
+<footer>
+  <div class="footer-logo">Minkola 3D</div>
+  <p>3D Printed Party Bags — Made with ❤️ in the UK</p>
+  <p style="margin-top:.5rem"><a href="mailto:minkola@gmail.com">minkola@gmail.com</a> &nbsp;·&nbsp; ages 5+</p>
+  <p style="margin-top:.8rem;font-size:.8rem;opacity:.5">© 2026 Minkola 3D. All rights reserved.</p>
+</footer>
+
+<div class="toast" id="toast">🛒 Added!</div>
+<div class="cart-bubble" id="cartBubble" onclick="document.getElementById('custom').scrollIntoView({behavior:'smooth'})"></div>
+
+<script>
+// ======================== 🎨 EASY PRODUCT MANAGEMENT ========================
+// TO ADD/REMOVE: Just edit the arrays below (TOY_CATALOG, EXTRAS_CATALOG, COMING_SOON_THEMES)
+// 🐙 Flexi Octopus has been MOVED to EXTRAS for £1 (removed from standard bags)
+
+const TOY_CATALOG = {
+  // STANDARD shared
+  fidgetSpinner: { name:"Gyro Fidget Keychain", emoji:"🌀", weight:"16g", desc:"Spin-in-place gyro fidget — satisfying whirl on a keychain clip.", img:"https://makerworld.bblmw.com/makerworld/model/USdf95c4d13b501e/design/2025-02-11_153e8c1b46e23.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  purpleFidget:  { name:"Purple Flex Fidget Spinner", emoji:"🟣", weight:"16g", desc:"Satisfying flex fidget spinner — smooth spin & durable.", img:"https://makerworld.bblmw.com/makerworld/model/DSM00000000560330/design/2024-07-28_id5yszrsnird.jpeg?x-oss-process=image/resize,w_1000/format,webp" },
+  Spinny:  { name:"Spinner", emoji:"🟣", weight:"21g", desc:"This top spins for 1 minute and 35 seconds.", img:"https://makerworld.bblmw.com/makerworld/model/US7ee07d083d57f2/design/2025-06-13_0dd108ce36104.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  toggleSwitch:  { name:"Fidget Switch Clicker", emoji:"🔘", weight:"10g",  desc:"Click-clack toggle switch — addictive fidget toy.", img:"https://makerworld.bblmw.com/makerworld/model/DSM00000001117065/design/2025-02-16_9e5dd8f7d8d53.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  birdWhistle:   { name:"Warbler Water Whistle", emoji:"🐦", weight:"15g", desc:"Fill with water, blow — real bird warbling sound!", img:"https://makerworld.bblmw.com/makerworld/model/USb265cd836260c4/design/2024-09-18_c616f4576e0ed.webp?x-oss-process=image/resize,w_1000/format,webp", optional:true },
+  // STANDARD unique
+  miniPlain:   { name:"Toy Plain", emoji:"🥏", weight:"18g", desc:"Toy Plain", img:"https://makerworld.bblmw.com/makerworld/model/DSM00000001437963/design/2025-05-20_bf30b120421838.png?x-oss-process=image/resize,w_1000/format,webp" },
+  butterflyKey:  { name:"Purple Butterfly Keychain", emoji:"🦋", weight:"9g",  desc:"Lovely flexi butterfly keychain — pretty and posable.", img:"https://makerworld.bblmw.com/makerworld/model/US5df88a3970f2c8/design/2025-07-13_4f1bacd09a598.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  butterflyBookmark: { name:"Butterfly Bookmark", emoji:"🦋", weight:"17g", desc:"Delicate butterfly bookmark — keeps your page with style.", img:"https://makerworld.bblmw.com/makerworld/model/USe7157b49715c7b/design/2025-01-25_b3a8fcde91afc.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  footballBookmark: { name:"Football Bookmark", emoji:"⚽", weight:"7g", desc:"Sporty football bookmark — perfect for young readers.", img:"https://makerworld.bblmw.com/makerworld/model/USc36da98b3a1c54/design/2025-08-15_cf21c3a09353a8.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  // PREMIUM shared
+  bracelet:      { name:"Chain Link Bracelet", emoji:"📿", weight:"22g",  desc:"Fully articulated bracelet that prints ready-to-wear.", img:"https://makerworld.bblmw.com/makerworld/model/USb0bcd11c93f96/design/2025-02-07_69253a7dd0cb6.jpg?x-oss-process=image%2Fresize%2Cw_400%2Fformat%2Cwebp" },
+  toggleSwitchP: { name:"Fidget Switch Clicker", emoji:"🔘", weight:"10g",  desc:"Click-clack toggle switch — addictive fidget toy.", img:"https://makerworld.bblmw.com/makerworld/model/DSM00000001117065/design/2025-02-16_9e5dd8f7d8d53.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  spiralCone:    { name:"Spiral fidget cone", emoji:"🌀", weight:"30g", desc:"Hypnotic spiral cone — incredible twisting motion.", img:"https://makerworld.bblmw.com/makerworld/model/USe5cb6307caf768/design/c535d2bc9bc48878.jpeg?x-oss-process=image/resize,w_1000/format,webp" },
+  InfinityCube:     { name:"Infinity Cube", emoji:"🥚", weight:"32g", desc:"This cube is a great tool for endless folding.", img:"https://makerworld.bblmw.com/makerworld/model/US17b96f753144e9/design/2025-05-17_4c5ecfaaea5a2.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  dummyFigureBoy:{ name:"Figure (Black & Orange)", emoji:"🧸", weight:"5g", desc:"Fully poseable action figure — unlimited poses.", img:"https://makerworld.bblmw.com/makerworld/model/US14026595bdb684/design/2024-05-06_ae966d9bb882.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+  dummyFigureGirl:{ name:"Figure (Black & Orange)", emoji:"🧸", weight:"5g", desc:"Fully poseable action figure — unlimited poses.", img:"https://makerworld.bblmw.com/makerworld/model/US14026595bdb684/design/2024-05-06_ae966d9bb882.jpg?x-oss-process=image/resize,w_1000/format,webp" },
+};
+
+// EXTRAS (CC-friendly / legally sellable). 🐙
+const EXTRAS_CATALOG = [
+  { name:"Flying Propeller", emoji:"🚁", weight:"25g", desc:"Pull the cord and launch it sky-high — no supports needed, flies every time.", img:"https://makerworld.bblmw.com/makerworld/model/US41e4e71b587794/design/2023-11-01_0c5c414ee83de.jpeg?x-oss-process=image/resize,w_1000/format,webp", price:2 },
+  { name:"Panda", emoji:"🟣", weight:"4g", desc:"A cute giant panda holding a heart keychain.", img:"https://makerworld.bblmw.com/makerworld/model/US277371c4286e2a/design/66f42999503077ec.jpg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  { name:"Articulated Spike Dragon", emoji:"🟣", weight:"87g", desc:"This is the spike Dragon", img:"https://makerworld.bblmw.com/makerworld/model/USd247775c6224ec/design/2026-01-12_e2735a1c35fd5.jpeg?x-oss-process=image/resize,w_1000/format,webp", price:3 },
+  { name:"Purple Flex Fidget Spinner", emoji:"🟣", weight:"16g", desc:"Satisfying flex fidget spinner — smooth spin & durable.", img:"https://makerworld.bblmw.com/makerworld/model/DSM00000000560330/design/2024-07-28_id5yszrsnird.jpeg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  { name:"Color Splash Heart Puzzle", emoji:"🟣", weight:"16g", desc:"Satisfying fun and colorful heart puzzle.", img:"https://makerworld.bblmw.com/makerworld/model/US927a1f7888f2db/design/7fd83256605bee89.jpg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  { name:"3D Sphere Puzzle", emoji:"🟣", weight:"24g", desc:"Will you be able to assemble the sphere?", img:"https://makerworld.bblmw.com/makerworld/model/US58466fc2a8a48f/design/2025-09-26_8027f95a7c0e88.jpg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  { name:"Whistle", emoji:"🔊", weight:"10g", desc:"Loud clear whistle — great for outdoors.", img:"https://makerworld.bblmw.com/makerworld/model/US51d875fcece0e8/design/2025-04-22_ca3b71239f1e7.jpg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  { name:"Fidget Gyro Spinner", emoji:"🌀", weight:"20g", desc:"Satisfying gyro spinner — smooth spin, great fidget toy.", img:"http://makerworld.bblmw.com/makerworld/model/US5964c9d746f72c/design/2024-04-26_8e928b4a2178b.jpeg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+  // 🐙
+  { name:"Axolotl", emoji:"🐙", weight:"2g", desc:"Cute Axolotl!", img:"https://makerworld.bblmw.com/makerworld/model/USe6cc51866f7e94/design/2afe10f030bfa40b.jpg?x-oss-process=image/resize,w_1000/format,webp", price:1 },
+];
+
+// COMING SOON THEMES — add/remove easily
+const COMING_SOON_THEMES = [
+  { name: "⚽ Football Fever", emoji: "⚽", desc: "Mini footballs, stadium whistles, player keyrings — coming soon!", icon: "⚽" },
+  { name: "🦖 Dino Roar", emoji: "🦖", desc: "Articulated dinos, fossil puzzles, roar whistles!", icon: "🦖" },
+  { name: "🚀 Space Explorer", emoji: "🚀", desc: "Rockets, alien fidgets, glow-in-the-dark stars!", icon: "🌙" },
+  { name: "🦄 Unicorn Magic", emoji: "🦄", desc: "Sparkle horns, rainbow snakes, magical keyrings!", icon: "🦄" },
+  { name: "🐠 Under the Sea", emoji: "🐟", desc: "Flexi sharks, octopus buddies, mermaid bookmarks!", icon: "🐠" }
+];
+
+// ======================== CORE LOGIC ========================
+// NOTE: Octopus removed from standard bags (now only in extras)
+const getToysForBag = (gender, tier) => {
+  if (tier === 'standard') {
+    if (gender === 'boy') {
+      // Boys Standard: NO octopus (moved to extras)
+      return [TOY_CATALOG.fidgetSpinner, TOY_CATALOG.toggleSwitch, TOY_CATALOG.miniPlain, TOY_CATALOG.Spinny, TOY_CATALOG.footballBookmark, TOY_CATALOG.birdWhistle];
+    } else {
+      // Girls Standard: NO octopus (moved to extras)
+      return [TOY_CATALOG.fidgetSpinner, TOY_CATALOG.toggleSwitch, TOY_CATALOG.butterflyKey, TOY_CATALOG.Spinny, TOY_CATALOG.butterflyBookmark, TOY_CATALOG.birdWhistle];
+    }
+  } else {
+    if (gender === 'boy') {
+      return [TOY_CATALOG.bracelet, TOY_CATALOG.toggleSwitchP, TOY_CATALOG.spiralCone, TOY_CATALOG.dummyFigureBoy, TOY_CATALOG.InfinityCube, TOY_CATALOG.footballBookmark];
+    } else {
+      return [TOY_CATALOG.bracelet, TOY_CATALOG.toggleSwitchP, TOY_CATALOG.spiralCone, TOY_CATALOG.dummyFigureGirl, TOY_CATALOG.InfinityCube, TOY_CATALOG.butterflyBookmark];
+    }
+  }
+};
+
+const PRICES = { standard: 3.00, premium: 6.00 };
+const PER_TOY_TEXT = { standard: "£0.50 per toy", premium: "£1 per toy" };
+const THEME = {
+  girl:{ label:"Girls' Collection", emoji:'🎀', tagline:"Beautiful colours, magical toys — unicorn vibes & butterfly charm.", accent:'#FF3D9A', dark:'#b8006e', soft:'#fff0f8' },
+  boy: { label:"Boys' Collection",  emoji:'⚡', tagline:"Bold action, cool fidgets — guaranteed to be the best bag at the party.", accent:'#3B82F6', dark:'#1d4ed8', soft:'#eff6ff' }
+};
+
+let gender='girl', tier='standard';
+
+function applyTheme(g){ const t=THEME[g]; document.documentElement.style.setProperty('--accent',t.accent); document.documentElement.style.setProperty('--accent-dark',t.dark); document.documentElement.style.setProperty('--accent-soft',t.soft); }
+function setGender(g,el){ gender=g; document.querySelectorAll('#genderPills .pill').forEach(p=>p.className='pill'); el.className='pill on-'+g; applyTheme(g); render(); }
+function setTier(t,el){ tier=t; document.querySelectorAll('#tierPills .pill').forEach(p=>p.className='pill'); el.className='pill on-tier'; render(); }
+
+function render(){
+  const t=THEME[gender];
+  const toysList = getToysForBag(gender, tier);
+  const totalPrice = PRICES[tier];
+  const perToyNote = PER_TOY_TEXT[tier];
+  const isStandard = tier === 'standard';
+  const toysHTML = toysList.map(toy => `
+    <div class="toy-item">
+      <div class="toy-img"><img src="${toy.img}" alt="${toy.name}" onerror="this.parentElement.innerHTML='<div class=\\'toy-emoji\\'>${toy.emoji}</div>'"></div>
+      <div class="toy-body"><h4>${toy.emoji} ${toy.name}${toy.optional ? ' <span style="font-size:.7rem;color:#aaa;font-weight:600"></span>' : ''}</h4><p>${toy.desc} (${toy.weight})</p></div>
+    </div>
+  `).join('');
+  document.getElementById('bagCard').innerHTML=`
+    <div class="bag-head">
+      <div class="bag-head-left"><h2>${t.emoji} ${t.label} — ${isStandard ? 'Standard' : 'Premium'} Edition</h2><p>${t.tagline} ${isStandard ? 'Classic mix of fidgets & fun.' : 'Ultimate party bag with articulated figures, maze egg, spiral cone & more.'}</p><span class="safety-badge">${isStandard ? '✅ Made in UK — ages 5+' : '🎁 Premium collection — extra durable designs'}</span></div>
+      <div class="bag-head-right"><div class="bag-price">£${totalPrice} <span class="sm">/ bag</span><span class="pt">${perToyNote} · 🍬 Sweet included</span></div></div>
+    </div>
+    <div class="toys-grid">${toysHTML}</div>
+    <div class="sweet-row"><div class="si">🍬</div><div><h4>Plus a Sweet Treat!</h4><p>Every bag includes a wrapped sweet — a little extra surprise at the bottom.</p></div></div>
+    <div class="bag-foot"><p>🎨 Freshly printed in UK 🇬🇧 | each bag unique</p><button class="btn-accent" onclick="goOrder()">Order This Bag 🎉</button></div>`;
+}
+
+function renderExtras(){
+  const grid = document.getElementById('extrasGrid');
+  if(!grid) return;
+  grid.innerHTML = EXTRAS_CATALOG.map(item => `
+    <div class="extra-card">
+      <div class="extra-img"><img src="${item.img}" alt="${item.name}" onerror="this.parentElement.innerHTML='<div style=\\'font-size:3rem;text-align:center\\'>${item.emoji}</div>'"></div>
+      <div class="extra-body"><h4>${item.emoji} ${item.name}</h4><p>${item.desc}</p><div class="extra-meta"><span>⚖️ ${item.weight}</span><span style="color:#00C9B1">£${item.price} each</span></div></div>
+    </div>
+  `).join('');
+}
+
+function renderComingSoon(){
+  const grid = document.getElementById('comingGrid');
+  if(!grid) return;
+  grid.innerHTML = COMING_SOON_THEMES.map(theme => `
+    <div class="coming-card">
+      <div class="coming-badge">Coming Soon</div>
+      <div class="coming-icon">${theme.icon}</div>
+      <h3>${theme.name}</h3>
+      <p style="font-size:.8rem;opacity:.7;margin-top:.5rem">${theme.desc}</p>
+      <button class="btn-primary" style="margin-top:1rem;padding:.4rem 1rem;font-size:.8rem" onclick="notifyMe('${theme.name}')">Notify Me 📧</button>
+    </div>
+  `).join('');
+}
+
+function notifyMe(themeName){ showToast(`We'll email you when ${themeName} is ready! 🎉`); }
+function renderExtrasOrder(){
+  const el = document.getElementById('extrasOrderList');
+  if(!el) return;
+  el.innerHTML = EXTRAS_CATALOG.map((item, i) => `
+    <label style="display:flex;align-items:center;gap:.8rem;cursor:pointer;">
+      <input type="number" id="qE${i}" min="0" value="0" oninput="calcTotal()" style="width:60px;padding:.4rem .6rem;border-radius:8px;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-family:'Nunito',sans-serif;font-weight:700;font-size:.9rem;text-align:center;">
+      <span style="font-size:.88rem;font-weight:700;color:rgba(255,255,255,.85);">${item.emoji} ${item.name} <span style="color:rgba(255,255,255,.45);font-weight:600">— £${item.price} each</span></span>
+    </label>
+  `).join('');
+}
+
+function calcTotal(){
+  const gs = parseInt(document.getElementById('qGS').value)||0;
+  const gp = parseInt(document.getElementById('qGP').value)||0;
+  const bs = parseInt(document.getElementById('qBS').value)||0;
+  const bp = parseInt(document.getElementById('qBP').value)||0;
+  let cost = (gs*3.00) + (gp*6.00) + (bs*3.00) + (bp*6.00);
+  const summary = document.getElementById('orderSummary');
+  const btn = document.getElementById('submitBtn');
+  let lines = [];
+  if(gs>0) lines.push(`👧 Girls Standard ×${gs} = £${(gs*3.00).toFixed(2)}`);
+  if(gp>0) lines.push(`👧 Girls Premium ×${gp} = £${(gp*6.00).toFixed(2)}`);
+  if(bs>0) lines.push(`👦 Boys Standard ×${bs} = £${(bs*3.00).toFixed(2)}`);
+  if(bp>0) lines.push(`👦 Boys Premium ×${bp} = £${(bp*6.00).toFixed(2)}`);
+  EXTRAS_CATALOG.forEach((item, i) => {
+    const qty = parseInt(document.getElementById('qE'+i)?.value)||0;
+    if(qty > 0){ cost += qty * item.price; lines.push(`${item.emoji} ${item.name} ×${qty} = £${(qty*item.price).toFixed(2)}`); }
+  });
+  const total = gs+gp+bs+bp;
+  if(total === 0 && lines.filter(l=>!l.includes('Extras')).length === 0){ summary.style.display='none'; btn.style.opacity='.5'; btn.style.cursor='not-allowed'; btn.textContent='Enter bag quantities above 🎉'; return; }
+  lines.push(`<span style="color:#FFD600;font-size:1rem">Total: ${total} bag${total>1?'s':''} — £${cost.toFixed(2)}</span>`);
+  summary.innerHTML = lines.join('<br>');
+  summary.style.display='block';
+  btn.style.opacity='1'; btn.style.cursor='pointer';
+  btn.textContent=`Send Order (${total} bag${total>1?'s':''} — £${cost.toFixed(2)}) 🎉`;
+}
+
+function goOrder(){ showToast('Ready to order! Fill the form below ↓'); setTimeout(()=>document.getElementById('custom').scrollIntoView({behavior:'smooth'}),400); document.getElementById('cartBubble').style.display='block'; document.getElementById('cartBubble').textContent='🎁 Complete your order ↓'; }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent='✨ '+msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+// ── EmailJS config ───────────────────────────────────────────
+const EMAILJS_PUBLIC_KEY   = 'pNZ7kvLyZH0d95OCg';
+const EMAILJS_SERVICE_ID   = 'service_p2o7l27';
+const TEMPLATE_TO_YOU      = 'template_641yh2c';
+const TEMPLATE_TO_CUSTOMER = 'template_9h7irei';
+const YOUR_EMAIL           = 'minkola@gmail.com';
+// ────────────────────────────────────────────────────────────
+
+async function submitOrder(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending... ⏳'; btn.style.opacity = '.6'; btn.disabled = true;
+
+  const form = e.target;
+  const name      = form.querySelector('input[type=text]').value;
+  const email     = form.querySelector('input[type=email]').value;
+  const partyDate = form.querySelector('input[type=date]').value;
+  const notes     = form.querySelector('textarea').value;
+
+  const gs = parseInt(document.getElementById('qGS').value)||0;
+  const gp = parseInt(document.getElementById('qGP').value)||0;
+  const bs = parseInt(document.getElementById('qBS').value)||0;
+  const bp = parseInt(document.getElementById('qBP').value)||0;
+  let total = 0, lines = [];
+  if(gs>0){ lines.push('Girls Standard x'+gs+' = £'+(gs*3).toFixed(2)); total+=gs*3; }
+  if(gp>0){ lines.push('Girls Premium x'+gp+' = £'+(gp*6).toFixed(2));  total+=gp*6; }
+  if(bs>0){ lines.push('Boys Standard x'+bs+' = £'+(bs*3).toFixed(2));  total+=bs*3; }
+  if(bp>0){ lines.push('Boys Premium x'+bp+' = £'+(bp*6).toFixed(2));   total+=bp*6; }
+  EXTRAS_CATALOG.forEach(function(item,i){
+    const qty = parseInt(document.getElementById('qE'+i)?.value)||0;
+    if(qty>0){ const sub=qty*item.price; lines.push(item.name+' x'+qty+' = £'+sub.toFixed(2)); total+=sub; }
+  });
+
+  const orderSummary = lines.join('\n') || 'No items selected';
+  const estimatedTotal = '£'+total.toFixed(2);
+
+  const params = {
+    customer_name:   name,
+    customer_email:  email,
+    party_date:      partyDate || 'Not specified',
+    order_summary:   orderSummary,
+    notes:           notes || 'None',
+    estimated_total: estimatedTotal,
+  };
+
+  try {
+    await emailjs.init(EMAILJS_PUBLIC_KEY);
+    await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_TO_YOU,      Object.assign({}, params, { to_email: YOUR_EMAIL, reply_to: email }));
+    await emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_TO_CUSTOMER, Object.assign({}, params, { to_email: email,      reply_to: YOUR_EMAIL }));
+    showToast('Order sent! Check your email 🎉');
+    form.reset(); calcTotal();
+    document.getElementById('cartBubble').style.display='none';
+  } catch(err) {
+    console.error('EmailJS error:', err);
+    showToast('Something went wrong — email us at minkola@gmail.com');
+  } finally {
+    btn.textContent = 'Send My Order Request 🎉'; btn.style.opacity='1'; btn.disabled=false;
+  }
+}
+
+applyTheme('girl');
+render();
+renderExtras();
+renderComingSoon();
+renderExtrasOrder();
+</script>
+</body>
+</html>
